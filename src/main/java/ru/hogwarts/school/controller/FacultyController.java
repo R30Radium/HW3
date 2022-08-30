@@ -1,7 +1,5 @@
 package ru.hogwarts.school.controller;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
@@ -20,7 +18,7 @@ public class FacultyController {
         this.facultyService = facultyService;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Faculty> getFacultyInfo(@PathVariable Long id) {
         Faculty faculty = facultyService.findFaculty(id);
         if (faculty == null) {
@@ -36,10 +34,7 @@ public class FacultyController {
 
     @PutMapping
     public ResponseEntity<Faculty> editFaculty(@RequestBody Faculty faculty, Long id) {
-        Faculty foundFaculty = facultyService.editFaculty (faculty);
-        if (foundFaculty == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+        Faculty foundFaculty = facultyService.editFaculty (faculty, id);
         return ResponseEntity.ok(foundFaculty);
     }
 
@@ -49,9 +44,9 @@ public class FacultyController {
         return ResponseEntity.ok().build();
     }
 
-    // Controller
+
    @RequestMapping
-    public HttpEntity<? extends Collection<? extends Object>> findFaculties
+    public ResponseEntity<Collection<Faculty>> findFaculties
     (@RequestParam(required = false) String color) {
         if (color != null && !color.isBlank()) {
             return ResponseEntity.ok(facultyService.findByColor(color));

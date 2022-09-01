@@ -1,4 +1,4 @@
-package com.example.hw3;
+package ru.hogwarts.hw3;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -12,7 +12,8 @@ public class Student {
     private long id;
     private String name;
     private int age;
-
+    private int maxAge = 20;
+    private int minAge = 10;
     public Student() {
     }
 
@@ -69,5 +70,21 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public void setMinAge(int minAge) {
+        this.minAge = minAge;
+    }
+
+    public int getMinAge() {
+        return minAge;
+    }
+
+    public int getMaxAge() {
+        return maxAge;
+    }
+
+    public void setMaxAge(int maxAge) {
+        this.maxAge = maxAge;
     }
 }

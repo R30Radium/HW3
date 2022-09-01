@@ -24,11 +24,8 @@ public class StudentService {
     }
 
     public Student editStudent(long id, Student student) {
-       return studentRepository.save(student);
+        return studentRepository.save(student);
     }
-     /*   students.put(id, student);
-        return student;
-    } */
 
     public void deleteStudent(long id) {
         studentRepository.deleteById(id);
@@ -38,5 +35,9 @@ public class StudentService {
         return studentRepository.findByAge(age);
     }
 
+
+    public Collection<Student> findByAgeBetween(int age) {
+        return studentRepository.findByAgeBetween(age);
+    }
 }
 

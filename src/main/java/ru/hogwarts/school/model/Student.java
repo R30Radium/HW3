@@ -13,10 +13,6 @@ public class Student {
     private String name;
     private int age;
 
-    private int maxAge;
-
-    private int minAge;
-
     public Student() {
     }
 

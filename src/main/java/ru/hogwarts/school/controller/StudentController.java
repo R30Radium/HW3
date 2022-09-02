@@ -14,7 +14,6 @@ import java.util.Collections;
 public class StudentController {
 
     private final StudentService studentService;
-    private int properAge;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -34,19 +33,19 @@ public class StudentController {
         return studentService.addStudent(student);
     }
 
-    @PutMapping
-    public ResponseEntity<Student> editStudent(@RequestBody Student student, Long id) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Student> editStudent( @PathVariable Student student, Long id) {
         Student foundStudent = studentService.editStudent(id, student);
         return ResponseEntity.ok(foundStudent);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("{age}")
+    @GetMapping("/{age}")
     public ResponseEntity<Collection<Student>> findStudents(@RequestParam(required = false) Integer age) {
         if (age != null) {
             return ResponseEntity.ok(studentService.findByAge(age));

@@ -24,15 +24,6 @@ public class Avatar {
     @JsonIgnore
     private Student student;
 
-//    public Avatar(Long id, String filePath, Long fileSize, String mediaType, Student student, byte[] data) {
-//        this.id = id;
-//        this.filePath = filePath;
-//        this.fileSize = fileSize;
-//        this.mediaType = mediaType;
-//        this.student = student;
-//        this.data = data;
-//    }
-
     public Long getId() {
         return id;
     }

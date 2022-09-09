@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.hogwarts.school.model.Student;
-import ru.hogwarts.school.model.StudentByCategory;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,14 +11,14 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long>{
 
-    @Query(value = "SELECT FROM table_hogwarts LIMIT all", nativeQuery = true)
-    List<Student> getStudentsByAge();
+    @Query(value = "SELECT ALL(age) FROM table_hogwarts", nativeQuery = true)
+    List<Student> getStudentsByAge(int age);
 
-    @Query(value = "SELECT FROM table_hogwarts AVG(age)", nativeQuery = true)
-    List<StudentByCategory> getStudentsByAverageAge();
+    @Query(value = "SELECT AVG(age) FROM table_hogwarts ", nativeQuery = true)
+    List<Integer> getStudentsByAverageAge();
 
-    @Query(value = "SELECT FROM table_hogwarts ORDER BY id DESC LIMIT 5", nativeQuery = true)
-    List<StudentByCategory> getStudentsByLastId();
+    @Query(value = "SELECT * FROM table_hogwarts ORDER BY id DESC LIMIT 5", nativeQuery = true)
+    List<Long> getStudentsByLastId(long id);
 
 
     List<Student> findByAge(int age);

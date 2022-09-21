@@ -67,9 +67,9 @@ public class AvatarController {
         }
     }
 
-    public ResponseEntity<Collection<Avatar>> getAvatarByPage(@RequestParam("page")Integer pageNumber,
-                                                           @RequestParam("size") Integer pageSize) {
-        Collection<Avatar> avatars = avatarService.getAvatarByPage(pageNumber, pageSize);
-        return ResponseEntity.ok(avatars);
+    @GetMapping(value = "/avatars")
+    public Collection<Avatar> getAllAvatars(@RequestParam("page") Integer pageNumber,
+                                            @RequestParam("size") Integer pageSize) {
+        return avatarService.findAll(pageNumber, pageSize);
     }
 }

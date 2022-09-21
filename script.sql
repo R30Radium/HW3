@@ -3,3 +3,4 @@ select table_hogwarts.name from table_hogwarts;
 select table_hogwarts.name from table_hogwarts where name like '%O%';
 select * from table_hogwarts where age < id;
 select * from table_hogwarts ORDER BY age;
+select table_hogwarts.age from table_hogwarts;

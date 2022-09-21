@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @OpenAPIDefinition
-public class Hw3Application {
+public class  Hw3Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Hw3Application.class, args);

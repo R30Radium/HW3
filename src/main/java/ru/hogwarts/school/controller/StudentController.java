@@ -75,5 +75,12 @@ public class StudentController {
         return ResponseEntity.ok(studentService.findStudent(id).getFaculty());
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Collection<Student>> getStudentsByName(@PathVariable("name") String name) {
+        Collection<Student> students = studentService.getStudentsByName(name);
+        return ResponseEntity.ok(students);
+    }
+
+
 }
 

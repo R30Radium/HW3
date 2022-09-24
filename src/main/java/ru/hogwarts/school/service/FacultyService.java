@@ -45,5 +45,9 @@ public class FacultyService {
     }
 
 
+    public Collection<Faculty> getFacultiesByNameAndColor(String name, String color) {
+        return facultyRepository.getFacultiesByNameAndColor(name, color);
+    }
+
 
 }

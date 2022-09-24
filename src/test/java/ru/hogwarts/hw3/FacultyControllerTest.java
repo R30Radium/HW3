@@ -46,7 +46,7 @@ public class FacultyControllerTest {
         final String color = "green";
         final long id = 1;
 
-        Faculty faculty = new Faculty(id, name, color);
+        Faculty faculty = new Faculty(id);
 
         JSONObject facultyObject = new JSONObject();
         facultyObject.put("id", id);

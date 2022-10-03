@@ -17,7 +17,8 @@ public class InfoController {
 
     @GetMapping("/getPort")
     public ResponseEntity<Integer> getPort() {
-        return infoRepository.getServerPort();
+
+        return ResponseEntity.ok(infoRepository.getServerPort());
     }
 
 }

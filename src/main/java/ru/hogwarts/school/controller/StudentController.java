@@ -81,6 +81,21 @@ public class StudentController {
         return ResponseEntity.ok(students);
     }
 
+    @GetMapping("/sorted_name")
+    public Collection<String> getStudentsWithFirstLetterSortedByAlphabet
+            (@RequestParam(name = "char") char letter) {
+        return studentService.getStudentsWithFirstLetterSortedByAlphabet(letter);
+    }
+
+    @GetMapping("/average_age")
+    public double getStudentsAverageAgeUsingStream() {
+        return studentService.getStudentsAverageAgeUsingStream();
+    }
+
+    @GetMapping("/quest")
+    public Integer quest() {
+        return studentService.quest();
+    }
 
 }
 

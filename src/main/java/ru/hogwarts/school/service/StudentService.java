@@ -1,12 +1,15 @@
 package ru.hogwarts.school.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.Repository.StudentRepository;
 import ru.hogwarts.school.model.Student;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class StudentService {
@@ -72,9 +75,39 @@ public class StudentService {
     }
 
     public Collection<Student> getStudentsByName(String name) {
-        logger.info("The method that gets students by name is invoked");
+
         return studentRepository.getStudentByName(name);
     }
 
+    public Collection<String> getStudentsWithFirstLetterSortedByAlphabet(char letter) {
+        String part = String.valueOf(letter).toUpperCase();
+        Collection<Student> students = findAll();
+        return students.stream()
+                .map(Student::getName)
+                .map(String::toUpperCase)
+                .filter(student -> student.startsWith(part))
+                .sorted()
+                .collect(Collectors.toList());
+
+
+
+    }
+
+    public double getStudentsAverageAgeUsingStream() {
+        Collection<Integer> studentAge = new ArrayList<>();
+        Collection<Student> students = findAll();
+        return students.stream()
+                .mapToDouble(Student::getAge)
+                .average()
+                .orElseThrow();
+    }
+
+    public Integer quest() {
+        int sum = Stream.iterate(1, a -> a + 1)
+                .limit(1_000_000)
+                .parallel()
+                .reduce(0, Integer::sum);
+        return sum;
+    }
 }
 

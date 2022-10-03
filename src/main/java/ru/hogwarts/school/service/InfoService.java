@@ -2,7 +2,6 @@ package ru.hogwarts.school.service;
 
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.Repository.InfoRepository;
 
@@ -13,9 +12,8 @@ public class InfoService implements InfoRepository {
 
     private Integer serverPort;
 
-    public ResponseEntity<Integer> getServerPort() {
-        return ResponseEntity.ok(serverPort);
-    }
+    public Integer getServerPort() {
+        return serverPort; }
 
 
 }

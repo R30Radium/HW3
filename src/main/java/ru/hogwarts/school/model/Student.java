@@ -49,6 +49,11 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+        /*return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';*/
     }
 
     public Faculty getFaculty() {

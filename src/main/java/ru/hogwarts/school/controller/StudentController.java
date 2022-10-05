@@ -97,5 +97,15 @@ public class StudentController {
         return studentService.quest();
     }
 
+    @GetMapping("/print_students")
+    public void getStudentsUsingThread() {
+        studentService.getStudentsUsingThread();
+    }
+
+    @GetMapping("/print_students_synchronized")
+    public void getStudentsUsingThreadSynchronized() {
+        studentService.getStudentsUsingThreadSynchronized();
+    }
+
 }
 

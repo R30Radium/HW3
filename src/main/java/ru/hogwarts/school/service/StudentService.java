@@ -8,6 +8,7 @@ import ru.hogwarts.school.model.Student;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -109,5 +110,65 @@ public class StudentService {
                 .reduce(0, Integer::sum);
         return sum;
     }
+
+    public void printStudent(Student student) {
+        try {
+            System.out.println(student.toString());
+            Thread.sleep(500);
+        } catch (InterruptedException exception) {
+            System.out.println("Method was interrupted");
+        }
+    }
+
+    public void getStudentsUsingThread() {
+        List<Student> students = studentRepository.getStudentsSortedById();
+        printStudent(students.get(0));
+        printStudent(students.get(1));
+
+        new Thread(() -> {
+            printStudent(students.get(2));
+            printStudent(students.get(3));
+        }).start();
+
+        new Thread(() -> {
+            printStudent(students.get(4));
+            printStudent(students.get(5));
+        }).start();
+    }
+
+    public final Object flag = new Object();
+
+    public  synchronized  void printStudentSynchronized(Student student) {
+        synchronized (flag) {
+        try {
+            System.out.println(student.toString());
+            Thread.sleep(1000);
+        } catch (InterruptedException exception) {
+            System.out.println("Method was interrupted");
+        }
+        }
+    }
+
+    public void getStudentsUsingThreadSynchronized() {
+        List<Student> students = studentRepository.getStudentsSortedById();
+
+        printStudentSynchronized(students.get(0));
+        printStudentSynchronized(students.get(1));
+
+        synchronized (flag) {
+            new Thread(() -> {
+                printStudentSynchronized(students.get(2));
+                printStudentSynchronized(students.get(3));
+            }).start();
+        }
+
+        synchronized (flag) {
+            new Thread(() -> {
+                printStudentSynchronized(students.get(3));
+                printStudentSynchronized(students.get(4));
+            }).start();
+        }
+    }
+
 }
 

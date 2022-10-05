@@ -55,6 +55,6 @@ public class FacultyService {
         return faculties.stream()
                 .map(Faculty::getName)
                 .max(Comparator.comparingInt(String::length))
-                .get();
+                .orElseThrow();
     }
 }

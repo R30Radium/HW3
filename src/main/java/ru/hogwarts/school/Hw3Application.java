@@ -1,10 +1,13 @@
-package com.example.hw3;
+package ru.hogwarts.school;
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Hw3Application {
+@OpenAPIDefinition
+public class
+Hw3Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Hw3Application.class, args);
